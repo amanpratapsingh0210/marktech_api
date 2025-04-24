@@ -1,9 +1,11 @@
 services:
   - type: web
-    name: houseofmarktech-api
+    name: marktech-api
     runtime: python
     buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn app:app"
+    startCommand: "gunicorn marktechapi:app --bind 0.0.0.0:$PORT"
     envVars:
       - key: JWT_SECRET_KEY
         generateValue: true
+      - key: PORT
+        value: 10000
